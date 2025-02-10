@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2264C8, #A515A5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 100vh;
+    /* overflow-y: hidden; */
+}
+
+
+/* ------------------------------------------------------- header ------------------------------------------------------- */
+.header {
+    background-color: #6e15a5;
+    color: #fff;
+    box-shadow: 0 0 5px #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    padding: 10px;
+    /* font-size: 20px !important; */
+}
+
+.jogadores {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+#jogar-novamente {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#jogar-novamente img {
+    width: 30px;
+}
+
+.sair {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+}
+
+/* deixar aqui, em 'games.css' */
+.confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.confirm.ed {
+    background-color: rgb(208, 208, 208);
+}
+
+.confirm:hover {
+    transform: scale(1);
+}
+
+/* ------------------------------------------------------- container ------------------------------------------------------- */
+.head {
+    text-align: center;
+}
+
+#board {
+    /* background-color: rgb(94, 139, 180); */
+    /* border: 1px solid #000; */
+    width: clamp(100px, 600px, 1050px);
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.flashcard {
+    width: 80px;
+    height: 100px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #6e2cb0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.flashcard-front {
+    font-size: 10px;
+    color: #fff;
+}
+
+.flashcard-back {
+    background-color: #d379d3;
+    font-size: 50px;
+    transform: rotateY(180deg);
+}
+
+
+#modal-confirm {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#modal-confirm .modal-content {
+    background: linear-gradient(135deg, #2264C8, #A515A5);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 500px;
+    max-width: 100%;
+}
+
+#modal-confirm .modal-content button {
+    width: 100%;
+}
+
+img {
+    height: 30px;
+}
+
+/* Modal padrão */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilização do conteúdo do modal */
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s;
+}
+
+/* Modal Vitória */
+.vitoria,
+.derrota {
+    background-color: #28a745;
+    /* Verde */
+    color: white;
+    
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Modal Derrota */
+.derrota {
+    background-color: #dc3545;
+    /* Vermelho */
+}
+
+/* Botão dentro dos modais */
+button {
+    background-color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Ajustes para telas menores */
+@media screen and (max-width: 768px) {
+    .header {
+        font-size: 20px !important;
+    }
+
+    .flashcard {
+        width: 100px;
+        height: 62.5px;
+    }
+
+    .flashcard-front {
+        font-size: 15px;
+    }
+    
+    .flashcard-back {
+        font-size: 30px;
+    }
+}

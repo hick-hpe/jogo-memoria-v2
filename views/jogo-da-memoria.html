@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/jogo-da-memoria.css">
+    <title>Jogo da Memória</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h1>Jogo da Memória</h1>
+            <p>Cartas: <span id="cartas"></span></p> 
+            <p>Tempo: <span id="tempo"></span></p>
+            <button id="resetButton">Jogar</button>
+        </div>
+        <div id="board"></div>
+    </div>
+
+    
+    <!-- Modal de Vitória -->
+    <div id="modal-vitoria" class="modal">
+        <div class="modal-content vitoria">
+            <h2>🎉 Vitória!</h2>
+            <p>Parabéns! Você completou o desafio!</p>
+            <button onclick="fecharModal('modal-vitoria')">OK</button>
+        </div>
+    </div>
+
+    <!-- Modal de Derrota -->
+    <div id="modal-derrota" class="modal">
+        <div class="modal-content derrota">
+            <h2>💀 Derrota!</h2>
+            <p>O tempo acabou! Tente novamente.</p>
+            <button onclick="fecharModal('modal-derrota')">Tentar de Novo</button>
+        </div>
+    </div>
+
+
+    <script src="/assets/js/jogo-da-memoria.js"></script>
+</body>
+
+</html>

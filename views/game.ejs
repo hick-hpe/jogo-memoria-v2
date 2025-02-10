@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/game.css">
+  <title>Sala de Jogo</title>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Sala: <%= roomCode %>
+    </h1>
+    <div class="jogadores">
+      <div class="jogador">
+        <p>
+          <%= jogador1 %>
+        </p>
+        <p>Cartas: <span id="cartasJogador1">0</span></p>
+      </div>
+      <div class="jogador">
+        <p>
+          <%= jogador2 %>
+        </p>
+        <p>Cartas: <span id="cartasJogador2">0</span></p>
+      </div>
+    </div>
+
+    <div>Vez do jogador: <span id="vez-do-jogador">
+        <%= jogador1 %>
+      </span></div>
+    <div id="aviso-previo" style="font-size: 20px; padding: 10px 0;">JOGAR!!!</div>
+
+    <input type="hidden" id="jogador1" value="<%= jogador1 %>">
+    <input type="hidden" id="jogador2" value="<%= jogador2 %>">
+    <input type="hidden" id="roomCode" value="<%= roomCode %>">
+
+    <button id="jogar-novamente">Jogar Novamente</button>
+
+    <button class="sair" onclick="window.location.href = '/'">&larr;<i>Sair da sala</i></button>
+  </div>
+
+  <div class="container">
+    <div id="board"></div>
+  </div>
+
+  <div class="modal" id="modal-confirm">
+    <div class="modal-content">
+      <h1>Começar partida!!!</h1>
+      <button class="btn confirm" id="btn-confirm">Confirmar</button>
+      <!-- <button class="btn confirm ed" id="btn-confirm" disabled><img src="/img/loading.gif" alt=""><i>Esperando...</i></button> -->
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/gameSemTempo.js"></script>
+
+</body>
+
+</html>

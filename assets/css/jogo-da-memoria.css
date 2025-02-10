@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2264C8, #A515A5);
+}
+
+.container {
+    /* border: 1px solid #000; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.head {
+    text-align: center;
+}
+
+#board {
+    /* background-color: rgb(94, 139, 180); */
+    /* border: 1px solid #000; */
+    width: 1050px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centraliza as cartas */
+    gap: 10px;
+    /* Espaço entre cartas */
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.flashcard {
+    width: 100px;
+    height: 125px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8c471;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.flashcard-front {
+    font-size: 20px;
+}
+
+.flashcard-back {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
+
+#resetButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1fe267;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#resetButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Modal padrão */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilização do conteúdo do modal */
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s;
+}
+
+/* Modal Vitória */
+.vitoria {
+    background-color: #28a745;
+    /* Verde */
+    color: white;
+}
+
+/* Modal Derrota */
+.derrota {
+    background-color: #dc3545;
+    /* Vermelho */
+    color: white;
+}
+
+/* Botão dentro dos modais */
+button {
+    background-color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Ajustes para telas menores */
+@media screen and (max-width: 768px) {
+    #board {
+        width: 380px;
+        height: auto;
+    }
+
+    .flashcard {
+        width: 50px;
+        height: 62.5px;
+    }
+
+    .flashcard-front,
+    .flashcard-back {
+        font-size: 30px;
+    }
+}
